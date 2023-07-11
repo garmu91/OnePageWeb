@@ -1,0 +1,284 @@
+/*****************************************************************************************************
+**************************************ESTILOS GENERALES***********************************************
+*****************************************************************************************************/
+:root {
+    /*para crear variables en CSS, -- seguido del nombre que se le quiera poner, se pueden crear tantas como se necesiten*/
+    --mainColor: #143c54;
+    --dark: #252a34;
+    --light: #15a4bc;
+    --white: #eaeaea;
+    --title: 35px;
+    --text: 19px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Red Hat Text', sans-serif;
+    /*cuando el caracter de un color se repite 6 veces, se puede simplificar y ponerlo sólo 3 veces*/
+    background-color: #fff;
+    /*overflow-x sirve para modificar el comportamiento de la barra de desplazamiento horizontal, si la ponemos en hidden no se ve*/
+    /*overflow-y sirve para modificar el comportamiento de la barra de desplazamiento vertical*/
+    overflow-x: hidden;
+}
+
+/*****************************************************BISELES**********************************************/
+.bisel-abajo {
+    position: absolute;
+    /*para posicionarlo abajo*/
+    bottom: 0;
+    left: 0;
+    /*0 al borde arriba, 0 al borde derecho, 10 viewport height al borde abajo, y 100 viewport width al borde izquierdo*/
+    border-width: 0 0 10vh 100vw;
+    /*borde arriba transparente, borde derecho transparente, borde abajo del mismo color de fondo que la página, y borde izquierdo transparente*/
+    border-color: transparent transparent #fff transparent;
+    border-style: solid;
+}
+
+.bisel-arriba {
+    position: absolute;
+    /*para posicionarlo abajo*/
+    bottom: 0;
+    left: 0;
+    /*10 viewport height al borde arriba, 100 viewport width al borde derecho, 0 al borde abajo, y 0 al borde izquierdo*/
+    border-width: 10vh 100vw 0 0;
+    /*borde arriba del mismo color de fondo que la página, borde derecho transparente, borde abajo transparente, y borde izquierdo transparente*/
+    border-color: #fff transparent transparent transparent;
+    border-style: solid;
+}
+
+/*****************************************************************************************************
+**************************************ESTILOS MENU****************************************************
+*****************************************************************************************************/
+#inicio {
+    position: relative;
+    width: 100%;
+}
+
+/*******************************************BARRA NAVEGACION*******************************************/
+.menu {
+    /*para que la barra de navegación quede fija arriba*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-color: var(--white);
+    /*activamos display para acomodar los elementos como nosotros queremos*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*para que el elemento siempre esté por encima de otros elementos, en tal caso*/
+    z-index: 999;
+}
+
+.menu .logo {
+    margin-left: 20px;
+}
+
+.menu .logo h1 a {
+    text-decoration: none;
+    /*así se utilizan las variables en CSS, dentro de la propiedad var()*/
+    font-size: var(--title);
+    font-weight: 400;
+    color: var(--dark);
+}
+
+.menu .lista-content {
+    margin-right: 20px;
+}
+
+.menu .lista-content ul {
+    display: flex;
+}
+
+.menu .lista-content ul li {
+    list-style: none;
+}
+
+.menu .lista-content ul li a {
+    text-decoration: none;
+    color: var(--dark);
+    margin: 0 10px;
+    padding: 8px;
+    border-radius: 3px;
+    font-size: 1em;
+    transition: 0.3s;
+}
+
+.menu .lista-content ul li a:hover {
+    background-color: var(--mainColor);
+    color: #fff;
+}
+
+.menu .lista-content ul li a.active {
+    background-color: var(--mainColor);
+    color: #fff;
+}
+
+/*********************************************IMAGEN HEADER******************************************/
+.img-header {
+    /*importante colocar esto en la caja padre para más adelante poder posicionar a los elementos hijos*/
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url(../assets/images/logo.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+.img-header .bienvenido {
+    /*hemos modificado esta caja para que sea como una capa sobre la caja padre*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /*al darle todos estos estilos*/
+
+    /*este backbackground-color con color negro y esta transparencia sirve para oscurecer la imagen debajo*/
+    background-color: rgba(0, 0, 0, 0.6);
+    /*esto es para acomodar el texto y el botón*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.img-header .bienvenido h1 {
+    font-size: 50px;
+    color: #fff;
+    font-weight: 200;
+}
+
+.img-header .bienvenido p {
+    font-size: 20px;
+    color: #fff;
+    margin-top: 20px;
+}
+
+.img-header .bienvenido > button {
+    width: 170px;
+    height: 40px;
+    background-color: var(--mainColor);
+    border-radius: 24px;
+    color: #fff;
+    /*para quitar el borde del botón*/
+    border: none;
+    /*para quitar el borde al darle clic con el ratón*/
+    outline: none;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.5s;
+    text-align: center;
+    font-size: 20px;
+}
+
+.img-header .bienvenido > button:hover {
+    background-color: var(--light);
+}
+
+/*****************************************************************************************************
+**************************************ESTILOS MAIN****************************************************
+*****************************************************************************************************/
+
+/******************************************SECCION NOSOTROS******************************************/
+.nosotros {
+    width: 100%;
+    margin-top: 120px;
+}
+
+.nosotros .n-container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.nosotros .n-container h1 {
+    font-size: 3rem;
+    font-weight: 400;
+    color: var(--dark);
+    text-align: center;
+    margin-top: 20px;
+}
+
+.nosotros .n-container p {
+    text-align: center;
+    line-height: 35px;
+    color: var(--dark);
+    font-size: 0.9rem;
+    margin: 10px 0;
+}
+
+.nosotros .n-container .n-galeria {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+}
+
+.nosotros .n-container .n-galeria img {
+    width: calc(33.33% - 30px);
+    height: 300px;
+    margin: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.nosotros .n-container button {
+    width: 120px;
+    height: 40px;
+    margin: auto;
+    font-size: 1.2rem;
+    cursor: pointer;
+    text-align: center;
+    background-color:var(--mainColor);
+    color: var(--white);
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+
+.nosotros .n-container button:hover {
+    background-color: var(--light);
+}
+
+/******************************************SECCION PROYECTOS******************************************/
+.proyectos {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url(../assets/images/logo2.png);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    margin-top: 100px;
+}
+
+.proyectos .p-galeria {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap:wrap;
+    margin: 50px 0;
+}
+
+.proyectos .p-galeria img {
+    width: 20%;
+    height: 300px;
+    margin: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
